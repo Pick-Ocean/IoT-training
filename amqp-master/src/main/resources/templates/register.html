@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册界面</title>
+    <link type="text/css" rel="stylesheet" href="../static/register.css">
+    <script src="../static/vue.js"></script>
+    <style>
+        body{
+            background: url('https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg') no-repeat;
+            background-size: 100% ;
+        }
+        #box {
+            width: 20%;
+            height: 400px;
+            background-color: #00000060;
+            margin: auto;
+            margin-top: 10%;
+            text-align: center;
+            border-radius: 10px;
+            padding: 50px 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <form action="">
+            <label>账号</label>
+            <input type="text" id="username" name="username" placeholder="请输入账号" v-model='uname' @blur="checkname">
+            <p>{{error}}</p>
+            <label>密码</label>
+            <input type="password" id="password" name="password" placeholder="请输入密码" v-model='psw'>
+            <label>重新输入密码</label>
+            <input type="password" id="enpas" name="password" placeholder="请输入重新输入密码" v-model='epsw' @blur="checkpsw">
+            <p>{{msg}}</p>
+            <button type="button" id="btn" value="Register" v-on:click='reg1'>注册</button>
+          </form>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el : '#box',
+            data :{
+                    uname:'',
+                    psw:'',
+                    epsw:'',
+                    msg:'',
+                    nflag:true,
+                    pflag:true,
+                    error:''
+            },
+            methods:{
+                reg1:function(event){
+                    console.log(this.uname,this.psw,this.epsw);
+                    if(this.uname == '' || this.psw =='' || this.epsw == ''){
+                        alert("请把信息输入完整！");
+                    }else if(this.nflag && this.pflag){
+                        alert("你输入的信息合法！，注册成功！");
+                        localStorage.setItem(this.uname,this.psw);
+                        window.location.href = "login";
+                    }else{
+                        alert("注册失败，你输入的信息有误！");
+                    }
+                },
+                checkpsw:function(){
+                   if(this.psw != this.epsw){
+                       this.msg = "两次输入的密码不一致！";
+                       this.flag = false;
+                   }else{
+                       this.flag =true;
+                   }
+                },
+                checkname:function(){
+                    var username = localStorage.getItem(this.uname);
+                    if(username !=null){
+                        this.error = "该用户名已存在！";
+                        this.nflag = false;
+                    }else{
+                        this.error = '';
+                        this.nflag = true;
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

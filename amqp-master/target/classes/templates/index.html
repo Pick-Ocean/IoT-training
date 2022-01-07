@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background:url(../static/1.jpg) top left;
+            background-size:100%;
+        }
+        table{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div class="with:80%"  >
+        <table >
+            <thead>
+            <tr>
+                <th>type</th>
+                <th>value</th>
+                <th>time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="data : ${datalist}">
+                <td th:text="${data.type}">neo</td>
+                <td th:text="${data.value}">neo</td>
+                <td th:text="${data.time}">Otto</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background:url(../static/1.jpg) no-repeat;
+            background-size:100%;
+            margin:0 auto;
+            margin-top: 40px;
+            margin-left: 40%;
+        }
+        form,table{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <form action="/input">
+        <input type="text" name="DeviceName"/>
+        <button type="submit" onclick="">添加</button>
+    </form>
+    <form action="/query">
+        <button type="submit" >刷新</button>
+    </form>
+    <table>
+        <tr>
+            <td>设备名称</td>
+            <td>事件</td>
+            <td>qqqq</td>
+        </tr>
+        <tr th:each="device : ${devicelist}">
+            <td th:text="${device}">device1</td>
+            <td>
+                <form action="/delete">
+                    <input type="text" style="display:none" name="DeviceName" th:value="${device}"/>
+                    <button type="submit" >刪除</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
