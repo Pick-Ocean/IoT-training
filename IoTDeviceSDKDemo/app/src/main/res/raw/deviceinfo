@@ -1,0 +1,19 @@
+{
+    "productKey": "gr6ovkck4qG",
+    "deviceName": "phone",
+    "productSecret": "",
+    "deviceSecret": "dba3da70dde17bc20722985eca43f381",
+    "registerType": "",
+    "subDevice": [
+      {
+          "productKey": "",
+          "productSecret": "",
+          "deviceName": ""
+      },
+      {
+          "productKey": "",
+          "productSecret": "",
+          "deviceName": ""
+      }
+    ]
+}
